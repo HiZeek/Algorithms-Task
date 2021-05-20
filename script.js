@@ -4,8 +4,12 @@ function convertFahrToCelsius(val) {
     if (isNaN(val)) {
         if (val instanceof Array) {
             return `${val} is not a valid number but a/an Array`;
+        } else if (val instanceof Object) {
+            return `${JSON.stringify(
+                val
+            )} is not a valid number but a/an ${typeof val}`;
         }
-        return `${val} is not a valid number but a/an ${typeof val}`;
+        return `${string(val)} is not a valid number but a/an ${typeof val}`;
     }
     return ((val - 32) * (5 / 9)).toFixed(4);
 }
